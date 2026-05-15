@@ -23,11 +23,23 @@ int main() {
     }
 
     // Final Report
-    cout << "\n--- " << subjectName << " Report ---" << endl;
+    cout << "\n--- " << subjectName << " Detailed Report ---" << endl;
     for (int m : marks) {
-        cout << m << " ";
-    }
-    cout << "\nTotal entries: " << marks.size() << endl;
+        string grade;
+        //Logic: Assigning a grade based on the mark
+        if (m>= 90) {
+            grade="A+";
+        } else if (m>= 75) {
+            grade="A";
+        } else if (m>=60) {
+            grade="B";
+        } else if (m>=40) {
+            grade="C";
+        } else {
+            grade="F";
+        }
+        cout << "Mark: " << m << " - Grade: " << grade << endl;
 
-    return 0;
+        }
+         return 0;
 }
