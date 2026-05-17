@@ -88,3 +88,60 @@ hr {
 #skills li {
     margin-bottom: 10px;
 }
+/* 5. PROJECT CARDS */
+.project-card {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 8px; /* Smooth rounded corners */
+    padding: 25px;
+    margin-top: 20px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Subtle interactive animation when hovering over your project card */
+.project-card:hover {
+    transform: translateY(-4px); /* Lifts the card slightly */
+    border-color: #38bdf8;       /* Highlights border blue */
+}
+
+.project-card a {
+    display: inline-block;
+    margin-top: 15px;
+    color: #38bdf8;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* 6. CALL TO ACTION BUTTON (In Hero Section) */
+#hero a {
+    display: inline-block;
+    background-color: #38bdf8;
+    color: #0f172a;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: opacity 0.2s;
+}
+
+#hero a:hover {
+    opacity: 0.9; /* Slight dim effect on hover */
+}
+
+/* 7. FOOTER */
+footer {
+    text-align: center;
+    padding: 40px 0;
+    color: #64748b;
+}
+
+footer a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    color: #38bdf8;
+}
