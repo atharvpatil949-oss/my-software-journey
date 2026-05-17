@@ -16,3 +16,35 @@ body {
     line-height: 1.6;
     padding: 0 20px;
 }
+/* 2. NAVIGATION BAR */
+header {
+    background-color: #1e293b; /* Slightly lighter dark shade for contrast */
+    padding: 20px 40px;
+    position: sticky;          /* Keeps the navbar locked to the top as you scroll */
+    top: 0;
+    z-index: 100;              /* Ensures navbar stays on top of other content */
+    margin: 0 -20px 40px -20px; /* Aligns edge-to-edge with the screen */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between; /* Pushes your name to the left, links to the right */
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    list-style: none; /* Removes the ugly bullet points */
+    gap: 20px;        /* Puts clean spacing between each menu item */
+}
+
+nav a {
+    color: #94a3b8;
+    text-decoration: none; /* Removes standard underlines */
+    font-weight: 500;
+    transition: color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+nav a:hover {
+    color: #38bdf8; /* Turns vibrant electric blue when hovered over */
+}
