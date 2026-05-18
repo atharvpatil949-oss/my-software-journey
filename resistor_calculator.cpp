@@ -29,7 +29,7 @@ int main() {
     cin >> band2;
     cout << "Enter the color of Band 3 (Multiplier): ";
     cin >> band3;
-    cout << "Enter the color of Band 4 (TOlerance): ";
+    cout << "Enter the color of Band 4 (Tolerance): ";
     cin >> band4;
     // Logic: Checking if the entered colors actually exist in our dictionary
     if (colorValues.find(band1) == colorValues.end() || 
@@ -46,6 +46,7 @@ int main() {
     int digit1 = colorValues[band1];
     int digit2 = colorValues[band2];
     int multiplierExponent = colorValues[band3];
+    string tolerance = tolerancevalues[band4];
 
     // Using the math library pow(base, exponent) function
     double resistance = (digit1 * 10 + digit2) * pow(10, multiplierExponent);
