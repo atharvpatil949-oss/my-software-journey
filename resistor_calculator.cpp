@@ -42,9 +42,20 @@ int main() {
     double resistance = (digit1 * 10 + digit2) * pow(10, multiplierExponent);
 
     cout << "\n======================================" << endl;
-    cout << "Calculated Resistance: " << resistance << " Ohms" << endl;
+
+    // If resistance is 1 Million Ohms or more
+    if (resistance >= 1000000) {
+        cout << "Calculated Resistance: " << (resistance / 1000000.0) << "MOhms (Megaohms)" << endl;
+    }
+    // If resistance is 1 Thousand Ohms or more
+    else if (resistance >= 1000) {
+        cout << "Calculated Resistance: " << (resistance / 1000.0) << "kOhms (Kiloohms)" << endl;
+    }
+    // Otherwise, keep it in standard Ohms
+    else {
+        cout << "Calculated Resistance: " << resistance << " ohms" << endl;
+    }
     cout << "======================================" << endl;
 
-   
     return 0;
 }
