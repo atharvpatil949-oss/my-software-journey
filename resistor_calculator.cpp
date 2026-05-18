@@ -51,20 +51,21 @@ int main() {
     // Using the math library pow(base, exponent) function
     double resistance = (digit1 * 10 + digit2) * pow(10, multiplierExponent);
 
-    cout << "\n======================================" << endl;
+   cout << "\n======================================" << endl;
 
     // If resistance is 1 Million Ohms or more
     if (resistance >= 1000000) {
-        cout << "Calculated Resistance: " << (resistance / 1000000.0) << "MOhms (Megaohms)" << endl;
+        cout << "Calculated Resistance: " << (resistance / 1000000.0) << " MOhms (Megaohms) " << tolerance << endl;
     }
     // If resistance is 1 Thousand Ohms or more
     else if (resistance >= 1000) {
-        cout << "Calculated Resistance: " << (resistance / 1000.0) << "kOhms (Kiloohms)" << endl;
+        cout << "Calculated Resistance: " << (resistance / 1000.0) << " kOhms (Kiloohms) " << tolerance << endl;
     }
     // Otherwise, keep it in standard Ohms
     else {
-        cout << "Calculated Resistance: " << resistance << " ohms" << tolerancevalues[band4] << endl;;
+        cout << "Calculated Resistance: " << resistance << " Ohms " << tolerance << endl;
     }
+    
     cout << "======================================" << endl;
 
     return 0;
