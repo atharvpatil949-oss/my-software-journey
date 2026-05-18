@@ -13,8 +13,14 @@ int main() {
         {"yellow", 4}, {"green", 5}, {"blue", 6}, {"violet", 7},
         {"gray", 8}, {"white", 9}
     };
+    map<string, string> tolerancevalues = {
+        {"brown", "+/- 1%"}, {"red", "+/ -2%"},
+    {"green", "+/- 0.5%"}, {"blue", "+/- 0.25%"},
+{"violet", "0.1%"}, {"gray", "+/- 0.05%"},
+{"gold", "+/-5%"}, {"silver", "+/- 10%"}
+    };
 
-    string band1, band2, band3;
+    string band1, band2, band3, band4;
 
     cout << "--- ENTC Resistor Color Code Calculator ---" << endl;
     cout << "Enter the color of Band 1: ";
@@ -23,10 +29,13 @@ int main() {
     cin >> band2;
     cout << "Enter the color of Band 3 (Multiplier): ";
     cin >> band3;
+    cout << "Enter the color of Band 4 (TOlerance): ";
+    cin >> band4;
     // Logic: Checking if the entered colors actually exist in our dictionary
     if (colorValues.find(band1) == colorValues.end() || 
         colorValues.find(band2) == colorValues.end() || 
-        colorValues.find(band3) == colorValues.end()) {
+        colorValues.find(band3) == colorValues.end() || 
+        tolerancevalues.find(band4) == tolerancevalues.end()) {
         
         cout << "Error: One or more invalid colors entered!" << endl;
         return 1; // Exit the program because of invalid input
@@ -53,7 +62,7 @@ int main() {
     }
     // Otherwise, keep it in standard Ohms
     else {
-        cout << "Calculated Resistance: " << resistance << " ohms" << endl;
+        cout << "Calculated Resistance: " << resistance << " ohms" << tolerancevalues[band4] << endl;;
     }
     cout << "======================================" << endl;
 
