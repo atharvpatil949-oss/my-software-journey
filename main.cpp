@@ -143,6 +143,70 @@ void runSignalGenerator() {
         cout << waveLine << "*" << " (" << voltage << " V)" << endl;
     }
 }
+
+// ==========================================
+// TOOL 4: DIGITAL LOGIC GATE SIMULATOR
+// ==========================================
+void runLogicGates() {
+    int gateChoice;
+    int inputA, inputB;
+
+    cout << "\n--- ENTC Digital Logic Simulator ---" << endl;
+    cout << "1. AND Gate\n2. OR Gate\n3. NOT Gate" << endl;
+    cout << "Select a gate to simulate: ";
+    cin >> gateChoice;
+
+    if (gateChoice == 1) {
+        cout << "\nEnter binary input A (0 or 1): "; cin >> inputA;
+        cout << "Enter binary input B (0 or 1): "; cin >> inputB;
+        
+        int result = inputA && inputB;
+        
+        cout << "\n--- TRUTH TABLE (AND) ---" << endl;
+        cout << "A | B | Output" << endl;
+        cout << "--------------" << endl;
+        cout << "0 | 0 |   0" << endl;
+        cout << "0 | 1 |   0" << endl;
+        cout << "1 | 0 |   0" << endl;
+        cout << "1 | 1 |   1" << endl;
+        cout << "------------------------" << endl;
+        cout << "Your Input Result: " << inputA << " AND " << inputB << " = " << result << endl;
+    } 
+    else if (gateChoice == 2) {
+        cout << "\nEnter binary input A (0 or 1): "; cin >> inputA;
+        cout << "Enter binary input B (0 or 1): "; cin >> inputB;
+        
+        int result = inputA || inputB;
+        
+        cout << "\n--- TRUTH TABLE (OR) ---" << endl;
+        cout << "A | B | Output" << endl;
+        cout << "--------------" << endl;
+        cout << "0 | 0 |   0" << endl;
+        cout << "0 | 1 |   1" << endl;
+        cout << "1 | 0 |   1" << endl;
+        cout << "1 | 1 |   1" << endl;
+        cout << "------------------------" << endl;
+        cout << "Your Input Result: " << inputA << " OR " << inputB << " = " << result << endl;
+    }
+    else if (gateChoice == 3) {
+        cout << "\nEnter single binary input A (0 or 1): "; cin >> inputA;
+        
+        int result = !inputA;
+        
+        cout << "\n--- TRUTH TABLE (NOT) ---" << endl;
+        cout << "A | Output" << endl;
+        cout << "----------" << endl;
+        cout << "0 |   1" << endl;
+        cout << "1 |   0" << endl;
+        cout << "------------------------" << endl;
+        cout << "Your Input Result: NOT " << inputA << " = " << result << endl;
+    }
+    else {
+        cout << "Invalid gate selection!" << endl;
+    }
+}
+
+
 // ==========================================
 // MAIN COMMAND CENTER
 // ==========================================
@@ -156,9 +220,10 @@ int main() {
         cout << "1. Run Resistor Color Code Calculator" << endl;
         cout << "2. Run Student Mark Tracker & Analyzer" << endl;
         cout << "3. Run Digital Signal Generator & Plotter" << endl;
-        cout << "4. Exit System" << endl;
+        cout << "4. Run Digital Logic Gate Simulator" << endl;
+        cout << "5. Exit System" << endl;
         cout << "======================================" << endl;
-        cout << "Select a module option (1-4): ";
+        cout << "Select a module option (1-5): ";
         
         cin >> choice;
 
@@ -178,6 +243,8 @@ int main() {
         } else if (choice == 3) {
             runSignalGenerator();
         } else if (choice == 4) {
+            runLogicGates();
+        } else if (choice == 5) {
             cout << "\nShutting down Toolkit. Thank you, Engineer!" << endl;
             break; // Breaks the infinite loop and gracefully exits the program
         } else {
