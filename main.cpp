@@ -117,6 +117,32 @@ void runMarkTracker() {
     
     }
 }
+
+// ==========================================
+// TOOL 3: DIGITAL SIGNAL GENERATOR & PLOTTER
+// ==========================================
+void runSignalGenerator() {
+    double amplitude, frequency;
+    
+    cout << "\n--- ENTC Digital Signal Generator ---" << endl;
+    cout << "Enter the peak amplitude (e.g., 5 for 5V): ";
+    cin >> amplitude;
+    cout << "Enter the frequency in Hz (e.g., 1 or 2): ";
+    cin >> frequency;
+
+    int totalSteps = 40; 
+    cout << "\nGenerating Digital Signal Plot:\n" << endl;
+
+    for (int i = 0; i < totalSteps; i++) {
+        double t = (double)i / totalSteps;
+        // Using M_PI from <cmath>
+        double voltage = amplitude * sin(2 * M_PI * frequency * t);
+        int spaces = static_cast<int>((voltage + amplitude) * 4);
+
+        string waveLine(spaces, ' ');
+        cout << waveLine << "*" << " (" << voltage << " V)" << endl;
+    }
+}
 // ==========================================
 // MAIN COMMAND CENTER
 // ==========================================
@@ -129,9 +155,10 @@ int main() {
         cout << "======================================" << endl;
         cout << "1. Run Resistor Color Code Calculator" << endl;
         cout << "2. Run Student Mark Tracker & Analyzer" << endl;
-        cout << "3. Exit System" << endl;
+        cout << "3. Run Digital Signal Generator & Plotter" << endl;
+        cout << "4. Exit System" << endl;
         cout << "======================================" << endl;
-        cout << "Select a module option (1-3): ";
+        cout << "Select a module option (1-4): ";
         
         cin >> choice;
 
@@ -149,6 +176,8 @@ int main() {
         } else if (choice == 2) {
             runMarkTracker();
         } else if (choice == 3) {
+            runSignalGenerator();
+        } else if (choice == 4) {
             cout << "\nShutting down Toolkit. Thank you, Engineer!" << endl;
             break; // Breaks the infinite loop and gracefully exits the program
         } else {
