@@ -3,6 +3,7 @@
 #include <string>
 #include <map>
 #include <cmath>
+#include <bitset>
 
 using namespace std;
 
@@ -206,6 +207,45 @@ void runLogicGates() {
     }
 }
 
+// ==========================================
+// TOOL 5: NUMBER BASE CONVERTER
+// ==========================================
+void runBaseConverter() {
+    string inputNumber;
+    int choice, inputBase;
+
+    cout << "\n--- ENTC Number Base Converter ---" << endl;
+    cout << "1. Binary (Base-2)\n2. Decimal (Base-10)\n3. Hexadecimal (Base-16)" << endl;
+    cout << "Select the base of your starting number (1-3): ";
+    cin >> choice;
+
+    if (choice == 1) inputBase = 2;
+    else if (choice == 2) inputBase = 10;
+    else if (choice == 3) inputBase = 16;
+    else {
+        cout << "Invalid choice! Returning to main menu." << endl;
+        return; // Returns to the main menu instead of crashing
+    }
+
+    cout << "Enter the number: ";
+    cin >> inputNumber;
+
+    try {
+        long long decimalValue = stoll(inputNumber, nullptr, inputBase);
+
+        cout << "\n======================================" << endl;
+        cout << "         CONVERSION RESULTS           " << endl;
+        cout << "======================================" << endl;
+        cout << dec << "Decimal (Base-10):     " << decimalValue << endl;
+        cout << hex << uppercase << "Hexadecimal (Base-16): " << decimalValue << endl;
+        cout << "Binary (Base-2):       " << bitset<16>(decimalValue) << endl;
+        cout << "======================================" << endl;
+
+    } catch (...) {
+        cout << "\nError: The number you entered does not match the base you selected!" << endl;
+    }
+}
+
 
 // ==========================================
 // MAIN COMMAND CENTER
@@ -221,9 +261,10 @@ int main() {
         cout << "2. Run Student Mark Tracker & Analyzer" << endl;
         cout << "3. Run Digital Signal Generator & Plotter" << endl;
         cout << "4. Run Digital Logic Gate Simulator" << endl;
-        cout << "5. Exit System" << endl;
+        cout << "5. Run Number Base Converter" << endl;
+        cout << "6. Exit System" << endl;
         cout << "======================================" << endl;
-        cout << "Select a module option (1-5): ";
+        cout << "Select a module option (1-6): ";
         
         cin >> choice;
 
@@ -245,6 +286,8 @@ int main() {
         } else if (choice == 4) {
             runLogicGates();
         } else if (choice == 5) {
+            runBaseConverter();
+        } else if (choice == 6) {
             cout << "\nShutting down Toolkit. Thank you, Engineer!" << endl;
             break; // Breaks the infinite loop and gracefully exits the program
         } else {
