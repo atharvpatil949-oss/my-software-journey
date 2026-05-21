@@ -1,78 +1,66 @@
+#include "mark_tracker.h"
 #include <iostream>
 #include <vector>
 #include <string> // We definitely need this now!
 
 using namespace std;
 
-int main() {
-    string subjectName; // A variable to hold text
+void runMarkTracker() {
     vector<int> marks;
     int input;
 
-    cout << "Enter the Subject Name: ";
-    getline(cin, subjectName); // Use getline for strings to include spaces
-
-    cout << "--- Recording marks for " << subjectName << " ---" << endl;
-    cout << "Enter marks (Type -1 to stop):" << endl;
+    cout << "\n--- Student Mark Tracker & Analyzer ---" << endl;
+    cout << "Enter student marks out of 100 (Type -1 to finish grading):" << endl;
 
     while (true) {
         cout << "> ";
         cin >> input;
 
-        // Safety check: Did the user type a decimal or text?
         if (cin.fail()) {
-            cin.clear(); // Reset the stream error flag
+            cin.clear();
             string garbage;
-            cin >> garbage; // Clear the invalid input (like the .5) out of the buffer
-            cout << " Invalid input! Please enter a whole number integer (or -1 to stop)." << endl;
-            continue; // Skip the rest of the loop and ask for input again
+            cin >> garbage;
+            cout << "Invalid input! Please enter a whole number integer (or -1 to stop)." << endl;
+            continue;
         }
+
         if (input == -1) break;
         marks.push_back(input);
     }
 
-    // Final Report
-    cout << "\n--- " << subjectName << " Detailed Report ---" << endl;
+    cout << "\n--- INDIVIDUAL REPORT ---" << endl;
     for (int m : marks) {
-        string grade;
-        //Logic: Assigning a grade based on the mark
-        if (m>= 90) {
-            grade="A+";
-        } else if (m>= 75) {
-            grade="A";
-        } else if (m>=60) {
-            grade="B";
-        } else if (m>=40) {
-            grade="C";
-        } else {
-            grade="F";
-        }
-        cout << "Mark: " << m << " - Grade: " << grade << endl;
+        cout << "Mark: " << m << " -> Grade: ";
+        if (m >= 90) cout << "A+" << endl;
+        else if (m >= 80) cout << "A" << endl;
+        else if (m >= 70) cout << "B" << endl;
+        else if (m >= 60) cout << "C" << endl;
+        else if (m >= 50) cout << "D" << endl;
+        else cout << "F (Fail)" << endl;
+    }
 
-        }
-         // --- STATISTICS SCETION ---
-         if (!marks. empty()) {
-            double sum = 0;
-            int highest = marks[0]; // Assume the first marks are the highest marks
+    // Statistics Engine
+    if (!marks.empty()) {
+        double sum = 0;
+        int highest = marks[0];
 
-            for (int m : marks) {
-                sum += m; // Add every mark to the total sum
-
-                if (m > highest) {
-                    highest = m; // We found a new highest mark!
-                }
+        for (int m : marks) {
+            sum += m;
+            if (m > highest) {
+                highest = m;
             }
-            double average = sum / marks.size();
-
-            cout << "\n==========================" << endl;
-            cout << "    MARKS STATISTICS         " << endl;
-            cout << "==========================" << endl;
-            cout << " Average Mark of tthe Class: " << average << endl;
-            cout << " Highest Mark: " << highest << endl;
-            cout << "==========================" << endl;
-        } else {
-            cout << "\nNo marks were entered to calculate statistics." << endl;
         }
-                
-        return 0;
+
+        double average = sum / marks.size();
+
+        cout << "\n===============================" << endl;
+        cout << "       MARK STATISTICS         " << endl;
+        cout << "===============================" << endl;
+        cout << "Average Mark of the Class: " << average << endl;
+        cout << "Highest Mark Scored:       " << highest << endl;
+        cout << "===============================" << endl;
+    } else {
+        cout << "\nNo marks were entered to calculate statistics." << endl;
+    
+    }
 }
