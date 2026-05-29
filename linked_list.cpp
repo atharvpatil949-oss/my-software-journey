@@ -1,57 +1,81 @@
 #include <iostream>
 using namespace std;
 
-// The Blueprint
+// 1. The Blueprint (The House)
 struct Node {
-    int data;       
-    Node* next;     
+    int data;
+    Node* next;
+};
+
+// 2. The Management Office (The System)
+class LinkedList {
+private:
+    // This is the master map sitting on the office desk. 
+    // It is strictly protected so no outside code can accidentally overwrite it.
+    Node* head;
+
+public:
+    // The Constructor: When the office first opens, the city is empty.
+    LinkedList() {
+        head = nullptr;
+    }
+
+    // The Automated Construction Crew
+    void insert(int score) {
+        // Step 1: Build the new house and pack it with data
+        Node* newNode = new Node;
+        newNode->data = score;
+        newNode->next = nullptr; // It is the newest house, so it points to nowhere
+
+        // Step 2: Check if the city is totally empty
+        if (head == nullptr) {
+            head = newNode; // Put the first address on the master desk map
+            return;         // Job done, exit the function
+        }
+
+        // Step 3: The Traversal (Driving to the end of the city)
+        Node* current = head; // Start the drive at House 1
+        
+        while (current->next != nullptr) {
+            current = current->next; // Drive to the next house
+        }
+
+        // Step 4: We found the last house! Wire the new house to it.
+        current->next = newNode;
+    }
+
+    // The Reporting Tool
+    void display() {
+        if (head == nullptr) {
+            cout << "The list is empty." << endl;
+            return;
+        }
+
+        Node* current = head;
+        cout << "Current Linked List: ";
+        while (current != nullptr) {
+            cout << "[" << current->data << "] -> ";
+            current = current->next;
+        }
+        cout << "NULL" << endl;
+    }
 };
 
 int main() {
-    cout << "--- MANUAL LINKED LIST ARCHITECTURE ---" << endl;
+    cout << "--- AUTOMATED LINKED LIST SYSTEM ---" << endl;
 
-    // 1. ALLOCATION (Building the houses in the city)
-    Node* head = new Node;
-    Node* second = new Node;
-    Node* third = new Node;
+    // Boot up the Management Office
+    LinkedList studentMarks;
 
-    // 2. THE PAYLOADS (Putting the test scores inside)
-    head->data = 85;
-    second->data = 90;
-    third->data = 95;
+    // Command the system to build and connect the houses automatically
+    studentMarks.insert(85);
+    studentMarks.insert(90);
+    studentMarks.insert(95);
+    studentMarks.insert(100);
+    studentMarks.insert(73);
 
-    // 3. THE WIRING (Connecting the internal maps)
-    // We walk into the first house and write the second house's address on the counter.
-    head->next = second; 
-    
-    // We walk into the second house and write the third house's address on the counter.
-    second->next = third; 
-    
-    // We walk into the third house and write 'nullptr' because there are no more houses.
-    third->next = nullptr; 
-
-    // 4. TRAVERSAL (Proving the chain works)
-    cout << "\nAccessing data through the chain:" << endl;
-    
-    // Reading House 1 directly from our desk
-    cout << "Node 1: " << head->data << endl;
-    
-    // Using House 1's map to find House 2
-    cout << "Node 2: " << head->next->data << endl;
-    
-    // Using House 1's map to find House 2, then using House 2's map to find House 3!
-    cout << "Node 3: " << head->next->next->data << endl;
-
-    // 5. DEMOLITION (Preventing memory leaks)
-    // We must destroy them one by one.
-    delete head;
-    delete second;
-    delete third;
-
-    // Neutralize the pointers on our desk
-    head = nullptr;
-    second = nullptr;
-    third = nullptr;
+    // Print the final chain
+    studentMarks.display();
 
     return 0;
 }
