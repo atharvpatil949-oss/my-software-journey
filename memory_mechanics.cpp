@@ -69,5 +69,6 @@ int main() {
     it = numbers.begin();
     cout << "Iterator successfully re-routed. Now safely points to: " << *it << endl;
 
+    
     return 0;
 }
